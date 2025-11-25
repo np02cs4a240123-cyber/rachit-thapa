@@ -1,57 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>My Portfolio</title>
-<link rel="stylesheet" href="css/style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
-<header>
-<h1>My Portfolio</h1>
-<nav>
-<ul>
-<li><a href="#about">About</a></li>
-<li><a href="#projects">Projects</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
-</nav>
-</header>
 
+    
+    <header class="hero">
+        <nav class="navbar">
+            <h2 class="logo">MyPortfolio<span></span></h2>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
 
-<main>
-<section id="about">
-<h2>About Me</h2>
-<p>Hello! I am a beginner web developer learning how to build my first portfolio using HTML, CSS, and Git.</p>
-</section>
+        <div class="hero-content">
+            <div class="hero-text fade-in">
+                <h1>Hello, I'm <span>RA€HIT THAPA</span></h1>
+                <p>Beginner Web Developer • Learning & Building</p>
+                <a href="#projects" class="btn">View Projects</a>
+            </div>
+        </div>
+    </header>
 
+    
+    <section id="about" class="about">
+        <div class="about-container">
+            <div class="about-text fade-in">
+                <h2>About Me</h2>
+                <p>Hello! I am a beginner web developer learning to build modern, professional portfolios using HTML, CSS, and Git. I focus on clean layouts, bold color schemes, and responsive designs.</p>
+                <ul class="skills">
+                    <li>HTML & CSS</li>
+                    <li>Responsive Design</li>
+                    <li>Version Control (Git)</li>
+                    <li>Creative UI/UX</li>
+                </ul>
+            </div>
 
-<section id="projects">
-<h2>My Projects</h2>
-<div class="project">
-<img src="images/screenshot.png" alt="Project Screenshot">
-<p>This is my first HTML and CSS project — building a personal portfolio website!</p>
-</div>
-</section>
+            <div class="about-photo fade-in">
+                <img src="images/profile.png" alt="Profile photo of Your Name">
+            </div>
+        </div>
+    </section>
 
+    
+    <section id="projects" class="projects">
+        <h2>My Projects</h2>
 
-<section id="contact">
-<h2>Contact Me</h2>
-<form>
-<label for="name">Name:</label>
-<input type="text" id="name" name="name" required>
+        <div class="projects-grid">
+            <article class="project-card fade-in">
+                <img src="images/screenshot.png" alt="Project screenshot — Personal Portfolio">
+                <div class="project-body">
+                    <h3>Personal Portfolio</h3>
+                    <p>Built with HTML, CSS, and modern layout techniques. Responsive, bold yellow accents, and accessible contact form.</p>
+                    <a class="project-link" href="#" aria-label="View Personal Portfolio">View Project</a>
+                </div>
+            </article>
 
+        
+        </div>
+    </section>
 
-<label for="email">Email:</label>
-<input type="email" id="email" name="email" required>
+   
+    <section id="contact" class="contact">
+        <h2>Contact Me</h2>
 
+        <form class="contact-form">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
 
-<label for="message">Message:</label>
-<textarea id="message" name="message" required></textarea>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
 
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Your Message" required></textarea>
 
-<button type="submit">Submit</button>
-</form>
-</section>
-</main>
+            <button type="submit" class="btn">Send Message</button>
+        </form>
+    </section>
 
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>&copy; <span id="year"></span> RA€HIT. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>
