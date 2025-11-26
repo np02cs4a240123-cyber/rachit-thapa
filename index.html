@@ -9,13 +9,13 @@
 </head>
 <body>
 
-    
     <header class="hero">
         <nav class="navbar">
-            <h2 class="logo">MyPortfolio<span></span></h2>
+            <h2 class="logo">My Portfolio<span></span></h2>
             <ul>
                 <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#media">Media</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -29,18 +29,36 @@
         </div>
     </header>
 
-    
     <section id="about" class="about">
         <div class="about-container">
             <div class="about-text fade-in">
                 <h2>About Me</h2>
                 <p>Hello! I am a beginner web developer learning to build modern, professional portfolios using HTML, CSS, and Git. I focus on clean layouts, bold color schemes, and responsive designs.</p>
-                <ul class="skills">
-                    <li>HTML & CSS</li>
-                    <li>Responsive Design</li>
-                    <li>Version Control (Git)</li>
-                    <li>Creative UI/UX</li>
-                </ul>
+
+                <!-- ⭐ NEW SKILL BARS ⭐ -->
+                <div class="skills-container">
+                    <div class="skill">
+                        <p>HTML</p>
+                        <div class="skill-bar"><span data-level="90"></span></div>
+                    </div>
+
+                    <div class="skill">
+                        <p>CSS</p>
+                        <div class="skill-bar"><span data-level="85"></span></div>
+                    </div>
+
+                    <div class="skill">
+                        <p>JavaScript</p>
+                        <div class="skill-bar"><span data-level="50"></span></div>
+                    </div>
+
+                    <div class="skill">
+                        <p>Git & GitHub</p>
+                        <div class="skill-bar"><span data-level="70"></span></div>
+                    </div>
+                </div>
+                <!-- END SKILL BARS -->
+
             </div>
 
             <div class="about-photo fade-in">
@@ -49,7 +67,6 @@
         </div>
     </section>
 
-    
     <section id="projects" class="projects">
         <h2>My Projects</h2>
 
@@ -59,19 +76,42 @@
                 <div class="project-body">
                     <h3>Personal Portfolio</h3>
                     <p>Built with HTML, CSS, and modern layout techniques. Responsive, bold yellow accents, and accessible contact form.</p>
-                    <a class="project-link" href="#" aria-label="View Personal Portfolio">View Project</a>
+                    <a class="project-link" href="https://github.com/np02cs4a240123/portfolio-yourname" target="_blank">
+                        View Project
+                    </a>
                 </div>
             </article>
-
-        
         </div>
     </section>
 
-   
+    <!-- ⭐ NEW MEDIA SHOWCASE SECTION ⭐ -->
+    <section id="media" class="media-section">
+        <h2>Media Showcase</h2>
+
+        <!-- Video -->
+        <div class="video-container">
+            <h3>My Demo Video</h3>
+            <video id="myVideo" width="100%" controls>
+                <source src="media/demo-video.mp4" type="video/mp4">
+                Your browser does not support video.
+            </video>
+        </div>
+
+        <!-- Audio -->
+        <div class="audio-container">
+            <h3>My Audio Clip</h3>
+            <audio id="myAudio" controls>
+                <source src="media/demo-audio.mp3" type="audio/mp3">
+                Your browser does not support audio.
+            </audio>
+        </div>
+    </section>
+
     <section id="contact" class="contact">
         <h2>Contact Me</h2>
 
-        <form class="contact-form">
+        <!-- ⭐ UPDATED CONTACT FORM ⭐ -->
+        <form class="contact-form" id="contactForm">
             <label for="name">Name</label>
             <input type="text" id="name" name="name" placeholder="Your Name" required>
 
@@ -82,17 +122,29 @@
             <textarea id="message" name="message" placeholder="Your Message" required></textarea>
 
             <button type="submit" class="btn">Send Message</button>
+
+            <!-- ⭐ SUCCESS MESSAGE ⭐ -->
+            <p id="formSuccess" class="success-message"></p>
         </form>
+
     </section>
 
-    <!-- FOOTER -->
     <footer class="footer">
         <p>&copy; <span id="year"></span> RA€HIT. All Rights Reserved.</p>
     </footer>
 
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Skill Bars Animation
+        document.querySelectorAll('.skill-bar span').forEach(span => {
+            const level = span.getAttribute('data-level');
+            span.style.width = level + "%";
+        });
     </script>
+
+    <!-- External JS -->
+    <script src="js/script.js"></script>
 
 </body>
 </html>
