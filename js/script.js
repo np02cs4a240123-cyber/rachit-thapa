@@ -41,9 +41,10 @@ form.addEventListener('submit', (e) => {
         return;
     }
 
-    // Save data
+    // Save data to localStorage
     saveFormData();
 
+    // Success message
     successMessage.style.color = "var(--yellow)";
     successMessage.textContent = "Thank you! Your message has been sent.";
     successMessage.style.display = "block";
@@ -65,7 +66,7 @@ const saveFormData = () => {
     localStorage.setItem('contactForm', JSON.stringify(formData));
 };
 
-// Show saved form data in console (optional)
+// Optional console output
 console.log("Saved form data:", localStorage.getItem("contactForm"));
 
 
@@ -76,5 +77,110 @@ document.querySelectorAll('.project-card').forEach(card => {
     card.addEventListener('click', () => {
         const link = card.querySelector('.project-link').getAttribute('href');
         window.open(link, "_blank");
+    });
+});
+
+
+// -------------------------
+// IMAGE SLIDER
+// -------------------------
+let index = 0;
+
+const slides = document.querySelector('.slides');
+const totalSlides = slides.children.length;
+
+document.getElementById('nextBtn').addEventListener('click', () => {
+    index = (index + 1) % totalSlides;
+    slides.style.transform = `translateX(-${index * 30}%)`;
+});
+
+document.getElementById('prevBtn').addEventListener('click', () => {
+    index = (index - 1 + totalSlides) % totalSlides;
+    slides.style.transform = `translateX(-${index * 30}%)`;
+});
+
+
+// -------------------------
+// CANVAS DRAWING
+// -------------------------
+const canvas = document.getElementById("drawingCanvas");
+const ctx = canvas.getContext("2d");
+
+let drawing = false;
+
+canvas.addEventListener("mousedown", () => {
+    drawing = true;
+});
+
+canvas.addEventListener("mouseup", () => {
+    drawing = false;
+    ctx.beginPath();
+});
+
+canvas.addEventListener("mousemove", draw);
+
+function draw(e) {
+    if (!drawing) return;
+
+    ctx.lineWidth = 3;
+    ctx.lineCap = "round";
+    ctx.strokeStyle = "#FFC300"; // yellow
+
+    ctx.lineTo(e.offsetX, e.offsetY);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(e.offsetX, e.offsetY);
+}
+
+// Clear Canvas Button
+document.getElementById("clearCanvas").addEventListener("click", () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+});
+
+
+// -------------------------
+// DARK / LIGHT MODE TOGGLE
+// -------------------------
+const themeToggle = document.getElementById("themeToggle");
+const body = document.body;
+
+// Load saved theme
+if (localStorage.getItem("theme") === "dark") {
+    body.classList.add("dark-theme");
+    themeToggle.textContent = "⚫";
+}
+
+themeToggle.addEventListener("click", () => {
+    body.classList.toggle("dark-theme");
+
+    if (body.classList.contains("dark-theme")) {
+        themeToggle.textContent = "⚫"; // sun icon
+        localStorage.setItem("theme", "dark");
+    } else {
+        themeToggle.textContent = "⚪"; // moon icon
+        localStorage.setItem("theme", "light");
+    }
+});
+
+
+// -------------------------
+// BACK TO TOP BUTTON
+// -------------------------
+const backToTop = document.getElementById("backToTop");
+
+// Show button when scrolling
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+        backToTop.style.display = "block";
+    } else {
+        backToTop.style.display = "none";
+    }
+});
+
+// Smooth scroll to top
+backToTop.addEventListener("click", () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
     });
 });
