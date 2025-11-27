@@ -17,9 +17,9 @@ html {
 
 /* DARK MODE */
 .dark-theme {
-    --bg: #000000;
+    --bg: #111111;
     --text: #ffffff;
-    --card: #111111;
+    --card: #222222;
 }
 
 /* RESET */
@@ -35,6 +35,22 @@ body {
     color: var(--text);
     line-height: 1.6;
     transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* --------------------------
+   SMOOTH THEME TRANSITIONS
+--------------------------- */
+body,
+.hero,
+.navbar,
+.project-card,
+.note,
+.saved-data-box,
+.contact-form input,
+.contact-form textarea,
+.skill-bar span,
+#drawingCanvas {
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 /* ---------- HERO SECTION ---------- */
@@ -196,7 +212,7 @@ body {
     width: 0;
     background: var(--yellow);
     border-radius: 6px;
-    transition: width 1.5s ease;
+    transition: width 1.5s ease, background 0.3s ease;
 }
 
 .about-photo img {
@@ -241,7 +257,7 @@ body {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.3s ease, color 0.3s ease;
     cursor: pointer;
 }
 
@@ -359,16 +375,6 @@ body {
     cursor: crosshair;
 }
 
-.canvas-controls button {
-    margin-top: 15px;
-    padding: 10px 20px;
-    background: var(--yellow);
-    border: none;
-    cursor: pointer;
-    font-weight: 600;
-    border-radius: 6px;
-}
-
 /* ---------- CONTACT SECTION ---------- */
 .contact {
     max-width: 700px;
@@ -403,7 +409,7 @@ body {
     border-radius: 8px;
     font-size: 14px;
     outline: none;
-    transition: border 0.3s ease, box-shadow 0.3s ease;
+    transition: border 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
     color: var(--text);
     background: var(--bg);
 }
@@ -538,7 +544,7 @@ section {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 36px;
     margin-bottom: 20px;
-    color: var(--black);
+    color: var(--text);
 }
 
 .notes-container {
@@ -549,27 +555,30 @@ section {
 }
 
 .note {
-    background: white;
+    background: var(--card);
     padding: 20px;
     border-left: 6px solid var(--yellow);
     box-shadow: 0px 5px 20px rgba(0,0,0,0.05);
     border-radius: 10px;
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 .note h3 {
     font-size: 24px;
     font-family: 'Bebas Neue', sans-serif;
     margin-bottom: 10px;
+    color: var(--text);
 }
 
 .note p {
     line-height: 1.6;
+    color: var(--text);
 }
 
 .chosen-method {
     margin-top: 10px;
     font-weight: 600;
-    color: var(--black);
+    color: var(--text);
 }
 
 /* Responsive */
@@ -581,18 +590,54 @@ section {
 
 /* -------------------------
    SAVED FORM DATA BOX
--------------------------- */
+------------------------- */
 .saved-data-box {
     margin-top: 30px;
     padding: 20px;
-    background: white;
+    background: var(--card);
     border-left: 6px solid var(--yellow);
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    color: var(--text);
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 .saved-data-box h3 {
     font-size: 22px;
     font-family: 'Bebas Neue', sans-serif;
     margin-bottom: 10px;
+    color: var(--text);
+}
+
+/* ---------- DARK MODE FIXES ---------- */
+.dark-theme .note,
+.dark-theme .saved-data-box,
+.dark-theme .contact-form input,
+.dark-theme .contact-form textarea,
+.dark-theme .project-card {
+    background: var(--card) !important;
+    color: var(--text) !important;
+    border-color: var(--text);
+}
+
+.dark-theme input::placeholder,
+.dark-theme textarea::placeholder {
+    color: #b8b8b8;
+}
+
+.dark-theme #formSuccess {
+    color: var(--yellow);
+}
+
+.dark-theme h3,
+.dark-theme strong {
+    color: var(--yellow);
+}
+
+.dark-theme .skill-bar span {
+    background: var(--yellow);
+}
+
+.dark-theme .project-card:hover {
+    background: #222;
 }

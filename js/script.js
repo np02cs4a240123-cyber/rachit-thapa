@@ -190,17 +190,17 @@ const body = document.body;
 // Load saved theme
 if (localStorage.getItem("theme") === "dark") {
     body.classList.add("dark-theme");
-    themeToggle.textContent = "⚫";
+    themeToggle.textContent = "☀️";
 }
 
 themeToggle.addEventListener("click", () => {
     body.classList.toggle("dark-theme");
 
     if (body.classList.contains("dark-theme")) {
-        themeToggle.textContent = "⚫"; // sun icon
+        themeToggle.textContent = "☀️"; // sun icon
         localStorage.setItem("theme", "dark");
     } else {
-        themeToggle.textContent = "⚪"; // moon icon
+        themeToggle.textContent = "🌙"; // moon icon
         localStorage.setItem("theme", "light");
     }
 });
