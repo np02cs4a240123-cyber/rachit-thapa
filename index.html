@@ -41,7 +41,6 @@
             </ul>
 
             <button id="themeToggle" class="theme-toggle">🌙</button>
-
         </nav>
 
         <div class="hero-content">
@@ -57,7 +56,7 @@
         <div class="about-container">
             <div class="about-text fade-in">
                 <h2>About Me</h2>
-                <p>Hello! I am a beginner web developer learning to build modern, professional portfolios using HTML, CSS, and Git. I focus on clean layouts, bold color schemes, and responsive designs.</p>
+                <p>Hello! I am a beginner web developer learning to build modern, professional portfolios using HTML, CSS, JS and Git. I focus on clean layouts, bold color schemes, and responsive designs.</p>
 
                 <div class="skills-container">
                     <div class="skill">
@@ -77,11 +76,10 @@
                         <div class="skill-bar"><span data-level="70"></span></div>
                     </div>
                 </div>
-
             </div>
 
             <div class="about-photo fade-in">
-                <img src="images/profile.png" alt="Profile photo of Your Name">
+                <img src="images/profile.png">
             </div>
         </div>
     </section>
@@ -94,10 +92,8 @@
                 <img src="images/screenshot.png" alt="Project screenshot — Personal Portfolio">
                 <div class="project-body">
                     <h3>Personal Portfolio</h3>
-                    <p>Built with HTML, CSS, and modern layout techniques. Responsive, bold yellow accents, and accessible contact form.</p>
-                    <a class="project-link" href="https://github.com/np02cs4a240123-cyber/rachit-thapa" target="_blank">
-                        View Project
-                    </a>
+                    <p>Built with HTML, CSS, JS, and modern layout techniques. Responsive, bold yellow accents, and accessible contact form.</p>
+                    <a class="project-link" href="https://github.com/np02cs4a240123-cyber/rachit-thapa" target="_blank">View Project</a>
                 </div>
             </article>
         </div>
@@ -106,7 +102,6 @@
     <section id="media" class="media-section">
         <h2>Media Showcase</h2>
 
-        <!-- Video -->
         <div class="video-container">
             <h3>My Demo Video</h3>
             <video id="myVideo" width="100%" controls>
@@ -115,7 +110,6 @@
             </video>
         </div>
 
-        <!-- Image Slider -->
         <section id="gallery" class="gallery">
             <h2>Image Slider</h2>
 
@@ -133,7 +127,6 @@
             </div>
         </section>
 
-        <!-- Canvas Section -->
         <section id="canvas-section" class="canvas-section">
             <h2>Draw Something!</h2>
             <canvas id="drawingCanvas" width="600" height="300"></canvas>
@@ -143,15 +136,31 @@
             </div>
         </section>
 
-        <!-- Audio -->
         <div class="audio-container">
             <h3>My Audio Clip</h3>
             <audio id="myAudio" controls>
                 <source src="media/demo-audio.mp3" type="audio/mp3">
-                Your browser does not support audio.
+                Browser does not support audio.
             </audio>
         </div>
+    </section>
 
+    <section id="layout-notes" class="fade-in">
+        <h2>Flexbox vs Grid (Learning Notes)</h2>
+
+        <div class="notes-container">
+            <div class="note">
+                <h3>Flexbox</h3>
+                <p>Flexbox is a one-dimensional layout system used to arrange items <strong>either in a row or a column</strong>. It is ideal for aligning elements, spacing items evenly, and building components like navigation bars and cards.</p>
+            </div>
+
+            <div class="note">
+                <h3>CSS Grid</h3>
+                <p>CSS Grid is a two-dimensional layout system used to work with <strong>both rows and columns</strong> at the same time. It is perfect for creating full-page layouts or sections like the About area in this portfolio.</p>
+            </div>
+        </div>
+
+        <p class="chosen-method">✔ <strong>For this portfolio, I used CSS Grid</strong> to arrange the About section into two columns.</p>
     </section>
 
     <section id="contact" class="contact">
@@ -172,26 +181,23 @@
             <p id="formSuccess" class="success-message"></p>
         </form>
 
+        <div id="savedDataDisplay" class="saved-data-box"></div>
     </section>
 
     <footer class="footer">
         <p>&copy; <span id="year"></span> RA€HIT. All Rights Reserved.</p>
     </footer>
 
-    <!-- Back to Top Button -->
     <button id="backToTop" class="back-to-top">▲</button>
 
     <script>
-        // Set current year
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // Skill bars
         document.querySelectorAll('.skill-bar span').forEach(span => {
             const level = span.getAttribute('data-level');
             span.style.width = level + "%";
         });
 
-        // Back to Top Button
         const backToTopBtn = document.getElementById('backToTop');
 
         window.onscroll = function() {

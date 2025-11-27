@@ -53,6 +53,9 @@ form.addEventListener('submit', (e) => {
     name.value = "";
     email.value = "";
     message.value = "";
+
+    // Update saved data display
+    showSavedData();
 });
 
 // Save form data to localStorage
@@ -68,6 +71,46 @@ const saveFormData = () => {
 
 // Optional console output
 console.log("Saved form data:", localStorage.getItem("contactForm"));
+
+
+// -------------------------
+// LOAD SAVED FORM DATA ON PAGE LOAD
+// -------------------------
+window.addEventListener("DOMContentLoaded", () => {
+    const saved = JSON.parse(localStorage.getItem("contactForm"));
+    if (saved) {
+        document.getElementById("name").value = saved.name;
+        document.getElementById("email").value = saved.email;
+        document.getElementById("message").value = saved.message;
+    }
+
+    // Display saved data on load
+    showSavedData();
+});
+
+
+// -------------------------
+// DISPLAY SAVED FORM DATA BELOW THE FORM
+// -------------------------
+function showSavedData() {
+    const saved = JSON.parse(localStorage.getItem("contactForm"));
+    const box = document.getElementById("savedDataDisplay");
+
+    if (!box) return; // in case the element doesn't exist
+
+    if (!saved) {
+        box.innerHTML = "<p>No saved messages yet.</p>";
+        return;
+    }
+
+    box.innerHTML = `
+        <h3>Last Submitted Message:</h3>
+        <p><strong>Name:</strong> ${saved.name}</p>
+        <p><strong>Email:</strong> ${saved.email}</p>
+        <p><strong>Message:</strong> ${saved.message}</p>
+    `;
+}
+
 
 
 // -------------------------
